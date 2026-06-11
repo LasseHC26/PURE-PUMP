@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PURE by HC Packaging Europe</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --black: #080808;
+    --off-white: #f2efe9;
+    --silver: #c4c4c4;
+    --gold: #b8975a;
+    --mid: #888;
+    --font-display: 'Cormorant Garamond', serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+
+  body { background: var(--black); color: var(--off-white); font-family: var(--font-body); overflow-x: hidden; }
+
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 28px 60px;
+    background: rgba(8,8,8,0);
+    transition: background 0.4s, border-color 0.4s;
+    border-bottom: 0.5px solid transparent;
+  }
+  nav.scrolled { background: rgba(8,8,8,0.9); border-color: #111; backdrop-filter: blur(12px); }
+  .nav-logo { font-family: var(--font-display); font-size: 24px; font-weight: 300; letter-spacing: 10px; color: var(--off-white); }
+  .nav-by { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--mid); }
+
+  .hero {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .hero-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(8,8,8,0.1) 0%,
+      rgba(8,8,8,0.0) 30%,
+      rgba(8,8,8,0.4) 70%,
+      rgba(8,8,8,1) 100%
+    );
+    z-index: 1;
+  }
+
+  .hero-content {
+    position: absolute;
+    bottom: 80px;
+    left: 0; right: 0;
+    text-align: center;
+    z-index: 2;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 1.4s ease-out 2s forwards;
+  }
+
+  .hero-wordmark {
+    font-family: var(--font-display);
+    font-size: 120px;
+    font-weight: 300;
+    letter-spacing: 32px;
+    color: var(--off-white);
+    line-height: 1;
+  }
+
+  .hero-rule { width: 40px; height: 0.5px; background: var(--gold); margin: 20px auto; }
+
+  .hero-tagline {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--silver);
+    margin-bottom: 36px;
+  }
+
+  .hero-cta {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--mid);
+    border-bottom: 0.5px solid var(--mid);
+    padding-bottom: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.3s, border-color 0.3s;
+  }
+  .hero-cta:hover { color: var(--gold); border-color: var(--gold); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    opacity: 0;
+    animation: fadeUp 1s ease-out 3.5s forwards;
+  }
+  .scroll-line {
+    width: 0.5px;
+    height: 56px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 1; }
+  }
+
+  .stats { display: grid; grid-template-columns: 1fr 0.5px 1fr 0.5px 1fr; border-top: 0.5px solid #161616; border-bottom: 0.5px solid #161616; }
+  .stat-divider { background: #161616; }
+  .stat { padding: 48px 32px; text-align: center; }
+  .stat-value { font-family: var(--font-display); font-size: 48px; font-weight: 300; color: var(--off-white); line-height: 1; margin-bottom: 8px; }
+  .stat-value.gold { color: var(--gold); }
+  .stat-label { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--mid); }
+
+  .truths { padding: 100px 60px; background: #0c0c0c; border-bottom: 0.5px solid #161616; }
+  .section-eye { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: var(--mid); text-align: center; margin-bottom: 64px; }
+  .truth { padding: 36px 0; border-top: 0.5px solid #181818; display: grid; grid-template-columns: 48px 1fr; gap: 28px; max-width: 640px; margin: 0 auto; }
+  .truth-num { font-family: var(--font-display); font-size: 36px; font-weight: 300; color: #222; line-height: 1.1; }
+  .truth-title { font-family: var(--font-display); font-size: 26px; font-weight: 400; color: var(--off-white); margin-bottom: 10px; }
+  .truth-body { font-size: 15px; font-weight: 300; color: var(--mid); line-height: 1.9; }
+  .truth-body span { color: var(--silver); }
+
+  .specs { padding: 100px 60px; border-bottom: 0.5px solid #161616; }
+  .spec-inner { max-width: 640px; margin: 0 auto; }
+  .spec-row { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; border-top: 0.5px solid #141414; }
+  .spec-key { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--mid); }
+  .spec-val { font-family: var(--font-display); font-size: 17px; color: var(--off-white); }
+  .spec-val.gold { color: var(--gold); }
+
+  .finishes { padding: 100px 60px; background: #0c0c0c; border-bottom: 0.5px solid #161616; }
+  .finish-grid { display: flex; justify-content: center; gap: 60px; margin-top: 48px; }
+  .finish { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+  .finish-dot { width: 48px; height: 48px; border-radius: 50%; }
+  .dot-silver { background: radial-gradient(circle at 35% 35%, #eee, #888); }
+  .dot-gold { background: radial-gradient(circle at 35% 35%, #d4b06a, #8a6030); }
+  .dot-black { background: radial-gradient(circle at 35% 35%, #444, #080808); border: 0.5px solid #333; }
+  .dot-custom { background: conic-gradient(#e0e0e0, #c8a050, #222, #e0e0e0); }
+  .finish-name { font-family: var(--font-display); font-size: 16px; font-weight: 400; color: var(--off-white); }
+
+  .closing { padding: 120px 60px; text-align: center; border-bottom: 0.5px solid #161616; }
+  .closing-rule { width: 28px; height: 0.5px; background: var(--gold); margin: 0 auto 48px; }
+  .closing-rule-b { width: 28px; height: 0.5px; background: var(--gold); margin: 48px auto 0; }
+  .closing-text { font-family: var(--font-display); font-size: 40px; font-weight: 300; font-style: italic; color: var(--off-white); line-height: 1.5; }
+  .closing-text em { color: var(--gold); font-style: normal; }
+
+  footer { padding: 60px; text-align: center; }
+  .footer-logo { font-family: var(--font-display); font-size: 28px; font-weight: 300; letter-spacing: 12px; color: var(--off-white); margin-bottom: 12px; }
+  .footer-sub { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--mid); }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-logo">PURE</div>
+  <div class="nav-by">by HC Packaging Europe</div>
+</nav>
+
+<section class="hero">
+  <video class="hero-video" autoplay muted loop playsinline>
+    <source src="pure_spray.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1 class="hero-wordmark">PURE</h1>
+    <div class="hero-rule"></div>
+    <p class="hero-tagline">A pump worthy of your perfume.</p>
+    <a class="hero-cta">Discover the collection</a>
+  </div>
+  <div class="scroll-hint"><div class="scroll-line"></div></div>
+</section>
+
+<div class="stats">
+  <div class="stat"><div class="stat-value">10</div><div class="stat-label">Years perfected</div></div>
+  <div class="stat-divider"></div>
+  <div class="stat"><div class="stat-value gold">6</div><div class="stat-label">Owned factories</div></div>
+  <div class="stat-divider"></div>
+  <div class="stat"><div class="stat-value">DDP</div><div class="stat-label">Delivered to door</div></div>
+</div>
+
+<section class="truths">
+  <p class="section-eye">Three truths</p>
+  <div class="truth">
+    <div class="truth-num">I</div>
+    <div>
+      <div class="truth-title">Precision is non-negotiable</div>
+      <div class="truth-body">Every PURE pump delivers a consistent, controlled dose — <span>0.065ml to 0.15ml</span> — with vaporisation quality that meets the demands of the world's finest fragrance houses.</div>
+    </div>
+  </div>
+  <div class="truth">
+    <div class="truth-num">II</div>
+    <div>
+      <div class="truth-title">Freedom of form</div>
+      <div class="truth-body">Crimp, crimpless or screw fixation. Neck sizes <span>13, 15, 18 and 20mm</span>. Spray angles from <span>30° to 75°</span>. PURE adapts to your bottle — not the other way around.</div>
+    </div>
+  </div>
+  <div class="truth">
+    <div class="truth-num">III</div>
+    <div>
+      <div class="truth-title">Delivered, complete</div>
+      <div class="truth-body">PURE is supplied <span>DDP — delivered duty paid</span> to your door. No hidden logistics. No surprises. One partner, one price, zero friction.</div>
+    </div>
+  </div>
+</section>
+
+<section class="specs">
+  <p class="section-eye">Technical profile</p>
+  <div class="spec-inner">
+    <div class="spec-row"><span class="spec-key">Neck</span><span class="spec-val">13 · 15 · 18 · 20 mm</span></div>
+    <div class="spec-row"><span class="spec-key">Dose</span><span class="spec-val">0.065 · 0.10 · 0.12 · 0.15 ml</span></div>
+    <div class="spec-row"><span class="spec-key">Fixation</span><span class="spec-val">Crimp · Crimpless · Screw</span></div>
+    <div class="spec-row"><span class="spec-key">Spray angle</span><span class="spec-val">30° · 45° · 60° · 75°</span></div>
+    <div class="spec-row"><span class="spec-key">Tube</span><span class="spec-val">PP · Transparent</span></div>
+    <div class="spec-row"><span class="spec-key">Material</span><span class="spec-val">POM-free</span></div>
+    <div class="spec-row"><span class="spec-key">Terms</span><span class="spec-val gold">DDP · Worldwide</span></div>
+  </div>
+</section>
+
+<section class="finishes">
+  <p class="section-eye">Available finishes</p>
+  <div class="finish-grid">
+    <div class="finish"><div class="finish-dot dot-silver"></div><div class="finish-name">Silver</div></div>
+    <div class="finish"><div class="finish-dot dot-gold"></div><div class="finish-name">Gold</div></div>
+    <div class="finish"><div class="finish-dot dot-black"></div><div class="finish-name">Black</div></div>
+    <div class="finish"><div class="finish-dot dot-custom"></div><div class="finish-name">Custom</div></div>
+  </div>
+</section>
+
+<section class="closing">
+  <div class="closing-rule"></div>
+  <p class="closing-text">The pump that sets brands <em>free.</em></p>
+  <div class="closing-rule-b"></div>
+</section>
+
+<footer>
+  <div class="footer-logo">PURE</div>
+  <div class="footer-sub">by HC Packaging Europe · hcpackaging.eu</div>
+</footer>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
+  });
+</script>
+
+</body>
+</html>

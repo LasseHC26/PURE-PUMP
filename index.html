@@ -21,6 +21,7 @@
 
   body { background: var(--black); color: var(--off-white); font-family: var(--font-body); overflow-x: hidden; }
 
+  /* NAV */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -28,20 +29,17 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 28px 60px;
+    padding: 20px 32px;
     background: rgba(8,8,8,0);
     transition: background 0.4s, border-color 0.4s;
     border-bottom: 0.5px solid transparent;
   }
   nav.scrolled { background: rgba(8,8,8,0.9); border-color: #111; backdrop-filter: blur(12px); }
-  .nav-logo { font-family: var(--font-display); font-size: 24px; font-weight: 300; letter-spacing: 10px; color: var(--off-white); }
-  .nav-by { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--mid); }
+  .nav-logo { font-family: var(--font-display); font-size: 22px; font-weight: 300; letter-spacing: 8px; color: var(--off-white); }
+  .nav-by { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--mid); }
 
-  .hero {
-    position: relative;
-    height: 100vh;
-    overflow: hidden;
-  }
+  /* HERO */
+  .hero { position: relative; height: 100vh; overflow: hidden; }
 
   .hero-video {
     position: absolute;
@@ -55,22 +53,17 @@
   .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-      to bottom,
-      rgba(8,8,8,0.1) 0%,
-      rgba(8,8,8,0.0) 30%,
-      rgba(8,8,8,0.4) 70%,
-      rgba(8,8,8,1) 100%
-    );
+    background: linear-gradient(to bottom, rgba(8,8,8,0.1) 0%, rgba(8,8,8,0.0) 30%, rgba(8,8,8,0.4) 70%, rgba(8,8,8,1) 100%);
     z-index: 1;
   }
 
   .hero-content {
     position: absolute;
-    bottom: 80px;
+    bottom: 60px;
     left: 0; right: 0;
     text-align: center;
     z-index: 2;
+    padding: 0 24px;
     opacity: 0;
     transform: translateY(20px);
     animation: fadeUp 1.4s ease-out 2s forwards;
@@ -78,27 +71,27 @@
 
   .hero-wordmark {
     font-family: var(--font-display);
-    font-size: 120px;
+    font-size: clamp(56px, 12vw, 120px);
     font-weight: 300;
-    letter-spacing: 32px;
+    letter-spacing: clamp(12px, 3vw, 32px);
     color: var(--off-white);
     line-height: 1;
   }
 
-  .hero-rule { width: 40px; height: 0.5px; background: var(--gold); margin: 20px auto; }
+  .hero-rule { width: 32px; height: 0.5px; background: var(--gold); margin: 16px auto; }
 
   .hero-tagline {
     font-family: var(--font-display);
-    font-size: 22px;
+    font-size: clamp(16px, 3.5vw, 22px);
     font-style: italic;
     font-weight: 300;
     color: var(--silver);
-    margin-bottom: 36px;
+    margin-bottom: 28px;
   }
 
   .hero-cta {
     display: inline-block;
-    font-size: 10px;
+    font-size: 9px;
     letter-spacing: 4px;
     text-transform: uppercase;
     color: var(--mid);
@@ -117,7 +110,7 @@
 
   .scroll-hint {
     position: absolute;
-    bottom: 32px;
+    bottom: 24px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 3;
@@ -126,7 +119,7 @@
   }
   .scroll-line {
     width: 0.5px;
-    height: 56px;
+    height: 40px;
     background: linear-gradient(to bottom, var(--gold), transparent);
     animation: scrollPulse 2s ease-in-out infinite;
   }
@@ -135,47 +128,70 @@
     50% { opacity: 1; }
   }
 
-  .stats { display: grid; grid-template-columns: 1fr 0.5px 1fr 0.5px 1fr; border-top: 0.5px solid #161616; border-bottom: 0.5px solid #161616; }
+  /* STATS */
+  .stats {
+    display: grid;
+    grid-template-columns: 1fr 0.5px 1fr 0.5px 1fr;
+    border-top: 0.5px solid #161616;
+    border-bottom: 0.5px solid #161616;
+  }
   .stat-divider { background: #161616; }
-  .stat { padding: 48px 32px; text-align: center; }
-  .stat-value { font-family: var(--font-display); font-size: 48px; font-weight: 300; color: var(--off-white); line-height: 1; margin-bottom: 8px; }
+  .stat { padding: 32px 16px; text-align: center; }
+  .stat-value { font-family: var(--font-display); font-size: clamp(32px, 6vw, 48px); font-weight: 300; color: var(--off-white); line-height: 1; margin-bottom: 6px; }
   .stat-value.gold { color: var(--gold); }
-  .stat-label { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--mid); }
+  .stat-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--mid); }
 
-  .truths { padding: 100px 60px; background: #0c0c0c; border-bottom: 0.5px solid #161616; }
-  .section-eye { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: var(--mid); text-align: center; margin-bottom: 64px; }
-  .truth { padding: 36px 0; border-top: 0.5px solid #181818; display: grid; grid-template-columns: 48px 1fr; gap: 28px; max-width: 640px; margin: 0 auto; }
-  .truth-num { font-family: var(--font-display); font-size: 36px; font-weight: 300; color: #222; line-height: 1.1; }
-  .truth-title { font-family: var(--font-display); font-size: 26px; font-weight: 400; color: var(--off-white); margin-bottom: 10px; }
-  .truth-body { font-size: 15px; font-weight: 300; color: var(--mid); line-height: 1.9; }
+  /* TRUTHS */
+  .truths { padding: 64px 24px; background: #0c0c0c; border-bottom: 0.5px solid #161616; }
+  .section-eye { font-size: 9px; letter-spacing: 5px; text-transform: uppercase; color: var(--mid); text-align: center; margin-bottom: 48px; }
+  .truth { padding: 28px 0; border-top: 0.5px solid #181818; display: grid; grid-template-columns: 36px 1fr; gap: 20px; max-width: 640px; margin: 0 auto; }
+  .truth-num { font-family: var(--font-display); font-size: 28px; font-weight: 300; color: #222; line-height: 1.1; }
+  .truth-title { font-family: var(--font-display); font-size: clamp(18px, 4vw, 26px); font-weight: 400; color: var(--off-white); margin-bottom: 8px; }
+  .truth-body { font-size: 14px; font-weight: 300; color: var(--mid); line-height: 1.9; }
   .truth-body span { color: var(--silver); }
 
-  .specs { padding: 100px 60px; border-bottom: 0.5px solid #161616; }
+  /* SPECS */
+  .specs { padding: 64px 24px; border-bottom: 0.5px solid #161616; }
   .spec-inner { max-width: 640px; margin: 0 auto; }
-  .spec-row { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; border-top: 0.5px solid #141414; }
-  .spec-key { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--mid); }
-  .spec-val { font-family: var(--font-display); font-size: 17px; color: var(--off-white); }
+  .spec-row { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-top: 0.5px solid #141414; gap: 16px; }
+  .spec-key { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--mid); white-space: nowrap; }
+  .spec-val { font-family: var(--font-display); font-size: clamp(13px, 3vw, 17px); color: var(--off-white); text-align: right; }
   .spec-val.gold { color: var(--gold); }
 
-  .finishes { padding: 100px 60px; background: #0c0c0c; border-bottom: 0.5px solid #161616; }
-  .finish-grid { display: flex; justify-content: center; gap: 60px; margin-top: 48px; }
-  .finish { display: flex; flex-direction: column; align-items: center; gap: 14px; }
-  .finish-dot { width: 48px; height: 48px; border-radius: 50%; }
+  /* FINISHES */
+  .finishes { padding: 64px 24px; background: #0c0c0c; border-bottom: 0.5px solid #161616; }
+  .finish-grid { display: flex; justify-content: center; gap: clamp(24px, 6vw, 60px); margin-top: 40px; flex-wrap: wrap; }
+  .finish { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  .finish-dot { width: 40px; height: 40px; border-radius: 50%; }
   .dot-silver { background: radial-gradient(circle at 35% 35%, #eee, #888); }
   .dot-gold { background: radial-gradient(circle at 35% 35%, #d4b06a, #8a6030); }
   .dot-black { background: radial-gradient(circle at 35% 35%, #444, #080808); border: 0.5px solid #333; }
   .dot-custom { background: conic-gradient(#e0e0e0, #c8a050, #222, #e0e0e0); }
-  .finish-name { font-family: var(--font-display); font-size: 16px; font-weight: 400; color: var(--off-white); }
+  .finish-name { font-family: var(--font-display); font-size: 15px; font-weight: 400; color: var(--off-white); }
 
-  .closing { padding: 120px 60px; text-align: center; border-bottom: 0.5px solid #161616; }
-  .closing-rule { width: 28px; height: 0.5px; background: var(--gold); margin: 0 auto 48px; }
-  .closing-rule-b { width: 28px; height: 0.5px; background: var(--gold); margin: 48px auto 0; }
-  .closing-text { font-family: var(--font-display); font-size: 40px; font-weight: 300; font-style: italic; color: var(--off-white); line-height: 1.5; }
+  /* CLOSING */
+  .closing { padding: 80px 24px; text-align: center; border-bottom: 0.5px solid #161616; }
+  .closing-rule { width: 24px; height: 0.5px; background: var(--gold); margin: 0 auto 40px; }
+  .closing-rule-b { width: 24px; height: 0.5px; background: var(--gold); margin: 40px auto 0; }
+  .closing-text { font-family: var(--font-display); font-size: clamp(24px, 6vw, 40px); font-weight: 300; font-style: italic; color: var(--off-white); line-height: 1.5; }
   .closing-text em { color: var(--gold); font-style: normal; }
 
-  footer { padding: 60px; text-align: center; }
-  .footer-logo { font-family: var(--font-display); font-size: 28px; font-weight: 300; letter-spacing: 12px; color: var(--off-white); margin-bottom: 12px; }
-  .footer-sub { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--mid); }
+  /* FOOTER */
+  footer { padding: 48px 24px; text-align: center; }
+  .footer-logo { font-family: var(--font-display); font-size: 22px; font-weight: 300; letter-spacing: 10px; color: var(--off-white); margin-bottom: 10px; }
+  .footer-sub { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--mid); }
+
+  /* DESKTOP */
+  @media (min-width: 768px) {
+    nav { padding: 28px 60px; }
+    .hero-content { bottom: 80px; padding: 0 40px; }
+    .truths { padding: 100px 60px; }
+    .specs { padding: 100px 60px; }
+    .finishes { padding: 100px 60px; }
+    .closing { padding: 120px 60px; }
+    footer { padding: 60px; }
+    .stat { padding: 48px 32px; }
+  }
 </style>
 </head>
 <body>
@@ -194,7 +210,7 @@
     <h1 class="hero-wordmark">PURE</h1>
     <div class="hero-rule"></div>
     <p class="hero-tagline">A pump worthy of your perfume.</p>
-    <a class="hero-cta">Discover the collection</a>
+    <a class="hero-cta" href="collection.html">Discover the collection</a>
   </div>
   <div class="scroll-hint"><div class="scroll-line"></div></div>
 </section>

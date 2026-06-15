@@ -131,15 +131,25 @@
   /* STATS */
   .stats {
     display: grid;
-    grid-template-columns: 1fr 0.5px 1fr 0.5px 1fr;
+    grid-template-columns: 1fr;
     border-top: 0.5px solid #161616;
     border-bottom: 0.5px solid #161616;
   }
-  .stat-divider { background: #161616; }
-  .stat { padding: 32px 16px; text-align: center; }
+  .stat-divider { display: none; }
+  .stat { padding: 32px 16px; text-align: center; border-bottom: 0.5px solid #161616; }
+  .stat:last-child { border-bottom: none; }
   .stat-value { font-family: var(--font-display); font-size: clamp(32px, 6vw, 48px); font-weight: 300; color: var(--off-white); line-height: 1; margin-bottom: 6px; }
   .stat-value.gold { color: var(--gold); }
   .stat-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--mid); }
+
+  .stat-statement {
+    font-family: var(--font-display);
+    font-size: clamp(13px, 2.4vw, 17px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--silver);
+    line-height: 1.6;
+  }
 
   /* TRUTHS */
   .truths { padding: 64px 24px; background: #0c0c0c; border-bottom: 0.5px solid #161616; }
@@ -190,7 +200,9 @@
     .finishes { padding: 100px 60px; }
     .closing { padding: 120px 60px; }
     footer { padding: 60px; }
-    .stat { padding: 48px 32px; }
+    .stat { padding: 48px 32px; border-bottom: none; }
+    .stats { grid-template-columns: 1fr 0.5px 1fr 0.5px 1fr; }
+    .stat-divider { display: block; background: #161616; }
   }
 </style>
 </head>
@@ -218,9 +230,9 @@
 <div class="stats">
   <div class="stat"><div class="stat-value">10</div><div class="stat-label">Years perfected</div></div>
   <div class="stat-divider"></div>
-  <div class="stat"><div class="stat-value gold">6</div><div class="stat-label">Owned factories</div></div>
+  <div class="stat"><div class="stat-statement">"It took ten years to perfect this pump. It takes half a second to feel why."</div></div>
   <div class="stat-divider"></div>
-  <div class="stat"><div class="stat-value">DDP</div><div class="stat-label">Delivered to door</div></div>
+  <div class="stat"><div class="stat-value gold">PREMIUM</div><div class="stat-label">Without the premium.</div></div>
 </div>
 
 <section class="truths">
@@ -236,14 +248,14 @@
     <div class="truth-num">II</div>
     <div>
       <div class="truth-title">Freedom of form</div>
-      <div class="truth-body">Crimp, crimpless or screw fixation. Neck sizes <span>13, 15, 18 and 20mm</span>. Spray angles from <span>30° to 75°</span>. PURE adapts to your bottle — not the other way around.</div>
+      <div class="truth-body">Crimp, crimpless or screw fixation. Neck sizes <span>13, 15, 18 and 20mm</span>. Spray angles from <span>30° to 75°</span>. Four sizes. Three fixations. One source.</div>
     </div>
   </div>
   <div class="truth">
     <div class="truth-num">III</div>
     <div>
       <div class="truth-title">Delivered, complete</div>
-      <div class="truth-body">PURE is supplied <span>DDP — delivered duty paid</span> to your door. No hidden logistics. No surprises. One partner, one price, zero friction.</div>
+      <div class="truth-body">PURE is supplied <span>delivered to your door</span>, terms agreed upfront. No hidden logistics. No surprises. One partner, one price, zero friction.</div>
     </div>
   </div>
 </section>
@@ -257,7 +269,7 @@
     <div class="spec-row"><span class="spec-key">Spray angle</span><span class="spec-val">30° · 45° · 60° · 75°</span></div>
     <div class="spec-row"><span class="spec-key">Tube</span><span class="spec-val">PP · Transparent</span></div>
     <div class="spec-row"><span class="spec-key">Material</span><span class="spec-val">POM-free</span></div>
-    <div class="spec-row"><span class="spec-key">Terms</span><span class="spec-val gold">DDP · Worldwide</span></div>
+    <div class="spec-row"><span class="spec-key">Terms</span><span class="spec-val gold">Delivered · Worldwide</span></div>
   </div>
 </section>
 
@@ -273,7 +285,7 @@
 
 <section class="closing">
   <div class="closing-rule"></div>
-  <p class="closing-text">The pump that sets brands <em>free.</em></p>
+  <p class="closing-text">Some decisions are <em>easy.</em></p>
   <div class="closing-rule-b"></div>
 </section>
 
